@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circuncentro</title>
+    <script src="js/script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+    <body>
+        <h1>Calcular o circuncentro de um triângulo</h1>
+        <div>
+            <label for="A" class="A">
+                <h2>Coordenadas do ponto A</h2>
+                <p>X: </p><input type="number" name="A" class="A" id="XA">
+                <p>Y: </p><input type="number" name="A" class="A" id="YA">
+            </label>
+
+            <label for="B" class="B">
+                <h2>Coordenadas do ponto B</h2>
+                <p>X: </p><input type="number" name="B" class="B" id="XB">
+                <p>Y: </p><input type="number" name="B" class="B" id="YB">
+            </label>
+
+            <label for="C" class="C">
+                <h2>Coordenadas do ponto C</h2>
+                <p>X: </p><input type="number" name="C" class="C" id="XC">
+                <p>Y: </p><input type="number" name="C" class="C" id="YC">
+            </label>
+            <input type="button" value="Calcular" onclick="calc()">
+        </div>
+        <section>
+            <h2>Resultado:</h2>
+            <p id="circle">Equação do círculo: </p>
+            <p id="centerCircle">Circuncentro: </p>
+        </section>
+        <canvas>
+            
+        </canvas>        
+    </body>
+</html>
