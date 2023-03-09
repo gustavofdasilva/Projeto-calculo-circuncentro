@@ -6,6 +6,14 @@ Autores: Gustavo Silva, Vitor Santana
 let circTextArea = document.getElementById("circle")
 let centerCircTextArea = document.getElementById("centerCircle")
 
+function inf(value) {
+    if (value == Infinity || value == -Infinity) {
+        return 0
+    } else {
+        return value
+    }
+}
+
 function calc() {
     let TriangleA = {
         X: +document.getElementById("XA").value,
@@ -61,16 +69,17 @@ function calc() {
     function bisectorPoint(point1, point2) {
         //equação ((point1.X - point2.X) / (point1.Y - point2.Y) * (x - midPoint(point1,point2).X)) = (Y - midpoint(p1,p2).Y)
 
-        let Nr = (point2.Y - point1.Y) / (point2.X - point1.X)
-        let Ms = -1/Nr
-        
+        let Nr = (point2.Y - point1.Y) / (point2.X - point1.X) 
+            Nr = inf(Nr)
+        let Ms = -1/Nr 
+            Ms = inf(Ms)
         let a = (point1.X - point2.X) / (point1.Y / point2.Y)
         let b = midPoint(point1,point2).X
         let c = midPoint(point1,point2).Y
     
         let info = {
-            Nr: (point2.Y - point1.Y) / (point2.X - point1.X),
-            Ms:  -1/Nr,
+            Nr: Nr,
+            Ms:  Ms,
             Mx: midPoint(point1,point2).X,
             My: midPoint(point1,point2).Y
         }
@@ -88,9 +97,13 @@ function calc() {
 
         let a = -1
         let b1 = 1/eq1.Ms
+            b1 = inf(b1)
         let c1 = (eq1.Ms*eq1.Mx - eq1.My)/eq1.Ms
+            c1 = inf(c1)
         let b2 = 1/eq2.Ms
+            b2 = inf(b2)
         let c2 = (eq2.Ms*eq2.Mx - eq2.My)/eq2.Ms
+            c2 = inf(c2)
 
         let intersectionPoint = {
             X: -(-(b2 * ((-c1+c2) / (b1-b2))) -c2),
@@ -163,7 +176,7 @@ function calc() {
     }
 
 //console
-/*console.log(supportLine(TriangleA,TriangleB))
+console.log(supportLine(TriangleA,TriangleB))
 console.log(supportLine(TriangleB,TriangleC))
 console.log(supportLine(TriangleC,TriangleA))
 
@@ -176,7 +189,7 @@ console.log(bisectorPoint(TriangleB,TriangleC))
 console.log(bisectorPoint(TriangleC,TriangleA))
 
 circ()
-console.log(circRad())*/
+console.log(circRad())
 circEq()
 circTextArea.innerText = ""
 centerCircTextArea.innerText = ""
