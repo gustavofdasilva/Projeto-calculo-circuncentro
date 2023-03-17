@@ -5,6 +5,7 @@ Autores: Gustavo Silva, Vitor Santana
 */ 
 let circTextArea = document.getElementById("circle")
 let centerCircTextArea = document.getElementById("centerCircle")
+let circR = document.getElementById("radius")
 
 function inf(value) {
     if (value == Infinity || value == -Infinity) {
@@ -142,7 +143,8 @@ function calc() {
 
                 ${a}x + ${b2 * ((-c1+c2) / (b1-b2))} = -${c2}
                 -x = ${-(b2 * ((-c1+c2) / (b1-b2))) -c2}
-                x = ${-(-(b2 * ((-c1+c2) / (b1-b2))) -c2)}*/
+                x = ${-(-(b2 * ((-c1+c2) / (b1-b2))) -c2)}
+            */
         }
 
 //7º etapa: encontrar o raio do círculo
@@ -165,8 +167,12 @@ function calc() {
             Circuncentro: (${circ().X},${circ().Y})
         `)
 
+        let stringCx = circ().X > 0 ? `-${circ().X}` : `+${circ().X}`
+
+        let stringCy = circ().Y > 0 ? `-${circ().Y}` : `+${circ().Y}`
+
         let info = {
-            circulo:`(x-${circ().X})² + (y-${circ().Y})² = ${Math.pow(circRad(),2)}`,
+            circulo:`(x${stringCx})² + (y${stringCy})² = ${Math.pow(circRad(),2)}`,
             centro: `(${circ().X},${circ().Y})`
         }
 
@@ -191,8 +197,10 @@ console.log(bisectorPoint(TriangleC,TriangleA))
 circ()
 console.log(circRad())
 circEq()
-circTextArea.innerText = ""
-centerCircTextArea.innerText = ""
-circTextArea.innerText += circEq().circulo
-centerCircTextArea.innerText += circEq().centro
+circTextArea.innerText = "Equação do círculo: "
+centerCircTextArea.innerText = "Circuncentro: "
+circR.innerText = "Raio: "
+circTextArea.innerText += ` ${circEq().circulo}`
+centerCircTextArea.innerText += ` ${circEq().centro}`
+circR.innerText += ` ${circRad()}`
 }
